@@ -34,21 +34,6 @@ class Contato:
         self.mensagem = mensagem
 
 
-def enviar_email_ia(nome, email, pergunta, msg):
-    msg = Message(
-        subject=f'{nome} enviou uma mensagem no Portfólio',
-        sender=app.config.get("MAIL_USERNAME"),
-        recipients=[email],
-        body=f'''
-                Pergunta feita para a IA: {pergunta}
-
-                {msg}
-                '''
-    )
-
-    mail.send(msg)
-
-
 def resposta_chat_gpt(pergunta: str) -> str:
     response = openai.Completion.create(
         engine="text-davinci-002",
